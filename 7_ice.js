@@ -1,6 +1,8 @@
 function drawIceScreen() {
   background("#bdc3c7");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("❄️", width / 2, 70);
   fill("#2980b9");
   textSize(24);

@@ -1,6 +1,8 @@
 function drawEnding1() {
   background("#4a0000");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("❌", width / 2, 90);
   fill(255);
   textSize(24);

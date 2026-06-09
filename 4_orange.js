@@ -1,6 +1,8 @@
 function drawOrangeScreen() {
   background("#d35400");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("🍊", width / 2, 70);
   fill(255);
   textSize(24);

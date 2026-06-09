@@ -1,6 +1,8 @@
 function drawEnding5() {
   background("#1a252f");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("🔔", width / 2, 90);
   fill("#2ecc71");
   textSize(24);

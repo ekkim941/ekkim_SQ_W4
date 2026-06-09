@@ -1,6 +1,8 @@
 function drawOpening() {
   background("#2b2625");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("🏺", width / 2, 70);
   fill("#e67e22");
   textSize(24);

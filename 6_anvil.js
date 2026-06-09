@@ -1,6 +1,8 @@
 function drawAnvilScreen() {
   background("#4b4b4b");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("🔨", width / 2, 70);
   fill("#f1c40f");
   textSize(24);

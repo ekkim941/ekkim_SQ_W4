@@ -1,6 +1,8 @@
 function drawLeftPath() {
   background("#231f20");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("🪵", width / 2, 70);
   fill("#c0392b");
   textSize(24);

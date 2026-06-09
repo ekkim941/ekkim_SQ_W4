@@ -1,6 +1,8 @@
 function drawEnding3() {
   background("#2c3e50");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("⛓️", width / 2, 90);
   fill(255);
   textSize(24);

@@ -1,6 +1,8 @@
 function drawCliffScreen() {
   background("#7f8c8d");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("🧗", width / 2, 70);
   fill("#34495e");
   textSize(24);

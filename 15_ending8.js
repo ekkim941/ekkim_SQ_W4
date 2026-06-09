@@ -1,6 +1,8 @@
 function drawEnding8() {
   background("#d946ef");
+  textAlign(CENTER, CENTER);
   textSize(70);
+  fill(255);
   text("👾", width / 2, 90);
   fill(255);
   textSize(24);

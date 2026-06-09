@@ -1,5 +1,5 @@
 // ============================================================
-// 15. sketch.js: Main Execution Router Loop
+// 2. sketch.js: Main Runtime Event Loop Router
 // ============================================================
 
 function setup() {
@@ -8,7 +8,7 @@ function setup() {
 }
 
 function draw() {
-  // Delegate rendering directly to the function inside each unique file
+  // Clear scene frame dynamically using matching state calls
   if (currentScene === OPENING) drawOpening();
   else if (currentScene === LEFT_PATH) drawLeftPath();
   else if (currentScene === RIGHT_PATH) drawRightPath();
@@ -27,7 +27,7 @@ function draw() {
 }
 
 function mousePressed() {
-  // Handle Multi-Choice Screen Input (Levels 1, 2, 3)
+  // Check interaction for Level 1, 2, and 3 Choice Screens
   if (
     currentScene !== E1 &&
     currentScene !== E2 &&
@@ -38,7 +38,6 @@ function mousePressed() {
     currentScene !== E7 &&
     currentScene !== E8
   ) {
-    // Detect top button click
     if (
       mouseX > width / 2 - BTN_W / 2 &&
       mouseX < width / 2 + BTN_W / 2 &&
@@ -46,9 +45,7 @@ function mousePressed() {
       mouseY < BTN_Y1 + BTN_H / 2
     ) {
       handleMove(1);
-    }
-    // Detect bottom button click
-    else if (
+    } else if (
       mouseX > width / 2 - BTN_W / 2 &&
       mouseX < width / 2 + BTN_W / 2 &&
       mouseY > BTN_Y2 - BTN_H / 2 &&
@@ -57,7 +54,7 @@ function mousePressed() {
       handleMove(2);
     }
   }
-  // Handle Reset clicks on Endings (Level 4)
+  // Check interaction for Level 4 Reset Screens
   else {
     if (
       mouseX > width / 2 - 250 / 2 &&
@@ -70,7 +67,6 @@ function mousePressed() {
   }
 }
 
-// Binary choice mapping structure
 function handleMove(choice) {
   if (currentScene === OPENING) {
     currentScene = choice === 1 ? LEFT_PATH : RIGHT_PATH;
