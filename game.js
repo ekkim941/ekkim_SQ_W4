@@ -1,8 +1,7 @@
 // ============================================================
-// 1. game.js: Global State Constants & Universal Render Helpers
+// 1. game.js: Core State & Bulletproof Timer
 // ============================================================
 
-// Definitions for the 15 strict screen state keys
 const OPENING = "OPENING";
 const LEFT_PATH = "LEFT_PATH";
 const RIGHT_PATH = "RIGHT_PATH";
@@ -10,6 +9,8 @@ const ORANGE = "ORANGE";
 const CLIFF = "CLIFF";
 const ANVIL = "ANVIL";
 const ICE = "ICE";
+const SNAKE_ATTACK = "SNAKE_ATTACK";
+
 const E1 = "E1";
 const E2 = "E2";
 const E3 = "E3";
@@ -18,17 +19,40 @@ const E5 = "E5";
 const E6 = "E6";
 const E7 = "E7";
 const E8 = "E8";
+const E_TIMEOUT = "E_TIMEOUT";
 
-// Track player positioning on the mountain
 let currentScene = OPENING;
 
-// Unified layout configurations
+// TIMER VARIABLES
+let sceneStartTime = 0;
+const DECISION_TIME_LIMIT = 10; // 10 seconds
+
+function startTimer() {
+  sceneStartTime = millis();
+}
+
+function getRemainingTime() {
+  let elapsedSeconds = (millis() - sceneStartTime) / 1000;
+  let remaining = DECISION_TIME_LIMIT - elapsedSeconds;
+  return max(0, ceil(remaining));
+}
+
+function isTimeUp() {
+  return (millis() - sceneStartTime) / 1000 >= DECISION_TIME_LIMIT;
+}
+
+// Scene switcher that explicitly resets the timer stamp
+function changeScene(newScene) {
+  currentScene = newScene;
+  startTimer();
+}
+
+// UI HELPERS
 const BTN_W = 540;
 const BTN_H = 45;
 const BTN_Y1 = 300;
 const BTN_Y2 = 360;
 
-// Shared UI element rendering methods
 function makeButton(x, y, w, h, txt) {
   let hovered =
     mouseX > x - w / 2 &&
@@ -57,4 +81,14 @@ function writeStoryText(narrative) {
   rectMode(CENTER);
   textAlign(CENTER, CENTER);
   text(narrative, width / 2, 210, 650, 100);
+}
+
+function drawTimerDisplay() {
+  let timeLeft = getRemainingTime();
+  push();
+  textAlign(RIGHT, TOP);
+  textSize(18);
+  fill(timeLeft <= 3 ? "#e74c3c" : "#f1c40f");
+  text("⏱️ Time Left: " + timeLeft + "s", width - 20, 20);
+  pop();
 }
